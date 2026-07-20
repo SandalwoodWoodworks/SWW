@@ -1,372 +1,145 @@
-<!DOCTYPE html>
+html<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sandalwood Woodworks | Custom Handmade Furniture</title>
-    <!-- Google Fonts: Cormorant Garamond for headings, Montserrat for body text -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    <!-- FontAwesome for clean social media and contact icons -->
     <link rel="stylesheet" href="https://cloudflare.com">
     
     <style>
-        /* --- DESIGN SYSTEM REQUISITES --- */
         :root {
             --bg-color: #ffffff;
             --text-main: #111111;
             --text-muted: #555555;
-            --accent-color: #7d634a; /* Subtle, warm wood tone accent */
+            --accent-color: #7d634a;
             --font-heading: 'Cormorant Garamond', serif;
             --font-body: 'Montserrat', sans-serif;
             --padding-desktop: 120px;
             --padding-mobile: 40px;
         }
-
-        /* --- RESET & GLOBAL STYLES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: var(--font-body);
-            font-size: 15px;
-            line-height: 1.8;
-            letter-spacing: 0.5px;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: var(--font-heading);
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-            transition: opacity 0.3s ease, color 0.3s ease;
-        }
-
-        a:hover {
-            opacity: 0.6;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            filter: grayscale(10%) contrast(105%); /* Elegant photo normalization */
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        section {
-            padding: var(--padding-desktop) 8%;
-        }
-
-        /* --- HEADER NAVIGATION --- */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 30px 8%;
-            background-color: rgba(255, 255, 255, 0.95);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid #f5f5f5;
-        }
-
-        .logo {
-            font-family: var(--font-heading);
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-        }
-
-        nav ul a {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 400;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh;
-            padding: 0;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #fafafa;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), 
-                        url('https://unsplash.com') no-repeat center center/cover;
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: #ffffff;
-            padding: 0 20px;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(36px, 5vw, 64px);
-            margin-bottom: 20px;
-            animation: fadeIn 1.2s ease-out;
-        }
-
-        /* --- ABOUT SECTION --- */
-        .about {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-            margin-top: 40px;
-        }
-
-        .about-image {
-            overflow: hidden;
-            background-color: #f9f9f9;
-        }
-
-        .about-text h2 {
-            font-size: 40px;
-            margin-bottom: 30px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .about-text h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 1px;
-            background-color: var(--text-main);
-        }
-
-        .about-text p {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        /* --- PORTFOLIO GALLERY GRID --- */
-        .gallery {
-            background-color: #fafafa;
-        }
-
-        .section-title {
-            font-size: 36px;
-            text-align: center;
-            margin-bottom: 60px;
-            text-transform: capitalize;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Elegant 3-column layout */
-            gap: 40px;
-        }
-
-        .gallery-item {
-            background: var(--bg-color);
-            padding-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-            overflow: hidden;
-        }
-
-        .gallery-img-wrapper {
-            overflow: hidden;
-            margin-bottom: 20px;
-            aspect-ratio: 4 / 3;
-            background-color: #eaeaea;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .gallery-item h3 {
-            font-size: 22px;
-            padding: 0 20px;
-            margin-bottom: 5px;
-        }
-
-        .gallery-item p {
-            font-size: 13px;
-            color: var(--text-muted);
-            padding: 0 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* --- TESTIMONIALS SLIDER --- */
-        .testimonials {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        .testimonial-item {
-            margin-bottom: 40px;
-        }
-
-        .testimonial-item p {
-            font-family: var(--font-heading);
-            font-style: italic;
-            font-size: 26px;
-            color: var(--text-main);
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-author {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 500;
-            color: var(--accent-color);
-        }
-
-        /* --- CONTACT SECTION --- */
-        .contact {
-            background-color: #ffffff;
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .minimal-contact-box {
-            margin-top: 40px;
-        }
-        
-        .minimal-contact-box p {
-            color: var(--text-muted);
-            font-size: 16px;
-            margin-bottom: 35px;
-            line-height: 1.6;
-        }
-        
-        .minimal-email-btn {
-            display: inline-block;
-            padding: 15px 45px;
-            border: 1px solid var(--text-main);
-            color: var(--text-main);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-        }
-        
-        .minimal-email-btn:hover {
-            background-color: var(--text-main);
-            color: #ffffff;
-            opacity: 1;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            padding: 60px 8%;
-            background-color: #111111;
-            color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-
-        .footer-logo {
-            font-family: var(--font-heading);
-            font-size: 20px;
-            letter-spacing: 2px;
-        }
-
-        .footer-socials {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        .footer-socials a {
-            font-size: 18px;
-            color: #ffffff;
-            transition: color 0.3s ease;
-        }
-
-        .footer-socials a:hover {
-            color: var(--accent-color);
-            opacity: 1;
-        }
-
-        .footer-copy {
-            font-size: 12px;
-            color: #777777;
-            width: 100%;
-            text-align: center;
-            border-top: 1px solid #222222;
-            padding-top: 30px;
-            margin-top: 20px;
-        }
-
-        /* --- RESPONSIVE LAYOUTS --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-body); font-size: 15px; line-height: 1.8; letter-spacing: 0.5px; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 400; letter-spacing: 1px; }
+        a { color: inherit; text-decoration: none; transition: opacity 0.3s ease, color 0.3s ease; }
+        a:hover { opacity: 0.6; }
+        img { max-width: 100%; height: auto; display: block; filter: grayscale(10%) contrast(105%); transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        section { padding: var(--padding-desktop) 8%; }
+        header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 8%; background-color: rgba(255, 255, 255, 0.95); display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid #f5f5f5; }
+        .logo { font-family: var(--font-heading); font-size: 24px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+        nav ul { display: flex; list-style: none; gap: 40px; }
+        nav ul a { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; font-weight: 400; }
+        .hero { height: 100vh; padding: 0; position: relative; display: flex; align-items: center; justify-content: center; background-color: #fafafa; overflow: hidden; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('https://unsplash.com') no-repeat center center/cover; z-index: 1; }
+        .hero-content { position: relative; z-index: 2; text-align: center; color: #ffffff; padding: 0 20px; }
+        .hero-content h1 { font-size: clamp(36px, 5vw, 64px); margin-bottom: 20px; animation: fadeIn 1.2s ease-out; }
+        .about { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 40px; }
+        .about-image { overflow: hidden; background-color: #f9f9f9; }
+        .about-text h2 { font-size: 40px; margin-bottom: 30px; position: relative; padding-bottom: 15px; }
+        .about-text h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 1px; background-color: var(--text-main); }
+        .about-text p { color: var(--text-muted); margin-bottom: 20px; }
+        .gallery { background-color: #fafafa; }
+        .section-title { font-size: 36px; text-align: center; margin-bottom: 60px; text-transform: capitalize; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .gallery-item { background: var(--bg-color); padding-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); overflow: hidden; }
+        .gallery-img-wrapper { overflow: hidden; margin-bottom: 20px; aspect-ratio: 4 / 3; background-color: #eaeaea; }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-item h3 { font-size: 22px; padding: 0 20px; margin-bottom: 5px; }
+        .gallery-item p { font-size: 13px; color: var(--text-muted); padding: 0 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .testimonials { max-width: 900px; margin: 0 auto; text-align: center; padding-left: 20px; padding-right: 20px; }
+        .testimonial-item { margin-bottom: 40px; }
+        .testimonial-item p { font-family: var(--font-heading); font-style: italic; font-size: 26px; color: var(--text-main); line-height: 1.6; margin-bottom: 20px; }
+        .testimonial-author { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; color: var(--accent-color); }
+        .contact { background-color: #ffffff; max-width: 700px; margin: 0 auto; text-align: center; }
+        .minimal-contact-box { margin-top: 40px; }
+        .minimal-contact-box p { color: var(--text-muted); font-size: 16px; margin-bottom: 35px; line-height: 1.6; }
+        .minimal-email-btn { display: inline-block; padding: 15px 45px; border: 1px solid var(--text-main); color: var(--text-main); font-size: 12px; text-transform: uppercase; letter-spacing: 2px; transition: all 0.3s ease; }
+        .minimal-email-btn:hover { background-color: var(--text-main); color: #ffffff; opacity: 1; }
+        footer { padding: 60px 8%; background-color: #111111; color: #ffffff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
+        .footer-logo { font-family: var(--font-heading); font-size: 20px; letter-spacing: 2px; }
+        .footer-socials { display: flex; gap: 25px; list-style: none; }
+        .footer-socials a { font-size: 18px; color: #ffffff; transition: color 0.3s ease; }
+        .footer-socials a:hover { color: var(--accent-color); opacity: 1; }
+        .footer-copy { font-size: 12px; color: #777777; width: 100%; text-align: center; border-top: 1px solid #222222; padding-top: 30px; margin-top: 20px; }
         @media (max-width: 900px) {
-            section {
-                padding: var(--padding-mobile) 5%;
-            }
-            header {
-                padding: 20px 5%;
-                flex-direction: column;
-                gap: 15px;
-            }
-            nav ul {
-                gap: 20px;
-            }
-            .about {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .gallery-grid {
-                grid-template-columns: 1fr; /* Responsively stack on mobile scales */
-            }
-            .hero {
-                height: 70vh;
-            }
-            footer {
-                flex-direction: column;
-                text-align: center;
-            }
+            section { padding: var(--padding-mobile) 5%; }
+            header { padding: 20px 5%; flex-direction: column; gap: 15px; }
+            nav ul { gap: 20px; }
+            .about { grid-template-columns: 1fr; gap: 40px; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .hero { height: 70vh; }
+            footer { flex-direction: column; text-align: center; }
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Sandalwood</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Sandalwood Woodworks</h1>
+            <p style="font-family: var(--font-heading); font-style: italic; font-size: 24px; letter-spacing: 1px;">Custom Handmade Furniture.</p>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-image">
+            <img src="https://unsplash.com" alt="Craftsman in workshop">
+        </div>
+        <div class="about-text">
+            <h2>The Art of Bespoke</h2>
+            <p>At Sandalwood Woodworks, we believe that furniture shouldn’t just occupy space—it should define it. Led by a commitment to true heirloom quality, every piece we design tells a story of patience, architectural precision, and deep respect for our materials.</p>
+            <p>We work closely with clients, interior designers, and architects to manifest completely custom commissions. From selecting unique, sustainable logs to laying the final micro-fine hand rub, our process ensures your vision lasts generations.</p>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <h2 class="section-title">Recent Work</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-img-wrapper"><img src="https://unsplash.com" alt="Cabinet"></div>
+                <h3>Sculpted Cabinets</h3>
+                <p>Solid Walnut & Brass</p>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img-wrapper"><img src="https://unsplash.com" alt="Table"></div>
+                <h3>Dining Tables</h3>
+                <p>Tamarind & Smoked Oak</p>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img-wrapper"><img src="https://unsplash.com" alt="Desk"></div>
+                <h3>Live Edge Desks</h3>
+                <p>Single Slab Blackwood</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="testimonial-item">
+            <p>"The resulting live-edge table completely brought our vision to life. Quality, service, and attention to detail were simply outstanding. Everything was executed with total class."</p>
+            <div class="testimonial-author">— Robert &amp; Eleanor P.</div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Commission a Piece</h2>
+        <div class="minimal-contact-box">
+            <p>We work globally with private clients and interior designers to build heirloom-quality furniture. Let's discuss your next project.</p>
+            <a href="mailto:hello@sandalwoodwoodworks.com" class="minimal-email-btn">Inquire via Email</a>
+        </div>
